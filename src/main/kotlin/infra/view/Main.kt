@@ -1,9 +1,7 @@
 package infra.view
 
-import application.AccountService
 import application.AccountServiceImpl
 import domain.Transaction
-import domain.TransactionRepository
 import infra.database.TransactionRepositoryInMemory
 
 fun main(args: Array<String>) {
@@ -11,8 +9,8 @@ fun main(args: Array<String>) {
     // Main class
     // It should create an accountService, do all the operations needed, and print the statement on console
     // Note that the accountService needs a transactionRepository implementation, so it should also be created here!
-    val storedData = TransactionRepositoryInMemory()
-    val accountService = AccountServiceImpl(storedData)
+    val transactionRepository = TransactionRepositoryInMemory()
+    val accountService = AccountServiceImpl(transactionRepository)
 
     val optionList:List<String> = listOf("1.- BALANCE INQUIRY", "2.- DEPOSIT", "3.- WITHDRAWAL", "4.- EXTRACT INQUIRY", "5.- EXIT")
 
